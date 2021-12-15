@@ -1,5 +1,6 @@
 <template>
-  <h1>Shilla</h1>
+  <p>Sheila</p>
+   <p> Version 1.0</p>
 </template>
 
 <script>

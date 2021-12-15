@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost/oms_api"
+  baseURL: "https://my-json-server.typicode.com/MarichTech/Vue-Web"
 });

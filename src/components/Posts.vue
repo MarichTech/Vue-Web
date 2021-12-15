@@ -1,6 +1,6 @@
 <template>
   <div class="list row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <h4>Posts List</h4>
       <ul class="list-group">
         <li
@@ -8,30 +8,18 @@
           :class="{ active: index == currentIndex }"
           v-for="(post, index) in posts"
           :key="index"
-          @click="setActivePost(post, index)"
-        >
-          {{ post.post }} {{ post.created_on }}
+          @click="setActivePost(post, index)">
+
+            <div class="card" style="margin-bottom: 10px;">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <small class="post-date"> Posted on: {{ post.date }}</small><br>
+                <p class="card-text">{{ post.description }}</p>
+              </div>
+            </div>
+
         </li>
       </ul>
-    </div>
-    <div class="col-md-6">
-      <div v-if="currentPost">
-        <h4>Comments</h4>
-        <div>
-          <label><strong>Post:</strong></label> {{ currentPost.name }}
-        </div>
-        <div>
-          <label><strong>Date:</strong></label> {{ currentPost.email }}
-        </div>
-        <button class="btn btn-primary" :to="'/accounts/' + currentPost.id">
-          Comment
-        </button>
-        <router-link class="badge badge-warning">Edit</router-link>
-      </div>
-      <div v-else>
-        <br />
-        <p>Click a post to view comments</p>
-      </div>
     </div>
   </div>
 </template>
@@ -53,6 +41,7 @@ export default {
     retrievePosts() {
       DataService.getAll()
         .then((response) => {
+              console.log(response);
           this.posts = response.data;
         })
         .catch((e) => {

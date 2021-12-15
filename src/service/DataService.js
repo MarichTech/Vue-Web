@@ -2,11 +2,11 @@ import http from "../http-common";
 
 class AccountDataService {
   getAll() {
-    return http.get("/accounts/1");
+    return http.get("/posts");
   }
 
-  get(id) {
-    return http.get(`/accounts/${id}`);
+  getComments() {
+    return http.get(`/comments`);
   }
 
   create(data) {

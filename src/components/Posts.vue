@@ -1,5 +1,6 @@
 <template>
-  <div class="list row">
+<div class="container">
+    <div class="list row">
     <div class="col-md-12">
       <h4>Posts List</h4>
       <ul class="list-group">
@@ -8,7 +9,7 @@
           :class="{ active: index == currentIndex }"
           v-for="(post, index) in posts"
           :key="index"
-          @click="setActivePost(post, index)">
+          @click="retrieveComments()">
 
             <div class="card" style="margin-bottom: 10px;">
               <div class="card-body">
@@ -22,6 +23,26 @@
       </ul>
     </div>
   </div>
+  <div v-if="comments">
+        <div
+          class="list-group-item"
+          :class="{ active: index == currentIndex }"
+          v-for="(comment, index) in comments"
+          :key="index">
+
+            <div class="card" style="margin-bottom: 10px;">
+              <div class="card-body">
+                <small class="post-date"> Post Id: {{ comment.postId }}</small><br>
+                <p class="card-text">{{ comment.body }}</p>
+              </div>
+            </div>
+
+        </div>
+
+  </div>
+  
+</div>
+
 </template>
 
 <script>
@@ -32,6 +53,7 @@ export default {
   data() {
     return {
       posts: [],
+      comments: null,
       currentPost: null,
       currentIndex: -1,
       title: "",
@@ -55,10 +77,16 @@ export default {
       this.currentIndex = -1;
     },
 
-    setActivePost(post, index) {
-      this.currentPost = post;
-      this.currentIndex = post ? index : -1;
+    retrieveComments() {
+      DataService.getComments()
+        .then((response) => {
+          this.comments = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
+
   },
   mounted() {
     this.retrievePosts();

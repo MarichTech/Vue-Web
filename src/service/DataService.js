@@ -9,17 +9,10 @@ class AccountDataService {
     return http.get(`/comments`);
   }
 
-  create(data) {
-    return http.post(`/accounts/create`, data);
+  addPost(data) {
+    return http.post(`/posts`, data);
   }
 
-  update(data) {
-    return http.post(`/accounts/update`, data);
-  }
-
-  delete(id) {
-    return http.delete(`/accounts/delete/${id}`);
-  }
 
 }
 

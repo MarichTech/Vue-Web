@@ -9,6 +9,17 @@ const routes = [{
     name: "accounts",
     component: () => import("./components/Posts")
   },
+  {
+    path: "/comments",
+    name: "comments",
+    component: () => import("./components/Comments")
+  },
+
+  {
+    path: "/add_post",
+    name: "Add Post",
+    component: () => import("./components/AddPost")
+  },
 
   {
     path: "/about",

@@ -14,6 +14,14 @@
           <li class="nav-item">
             <MenuLink class="nav-link" path="/" text="Posts"></MenuLink>
           </li>
+
+          <li class="nav-item">
+            <MenuLink class="nav-link" path="/add_post" text="Add Posts"></MenuLink>
+          </li>
+
+            <li class="nav-item">
+            <MenuLink class="nav-link" path="/comments" text="Comments"></MenuLink>
+          </li>
           <li class="nav-item">
             <MenuLink class="nav-link" path="/about" text="About"></MenuLink>
           </li>
